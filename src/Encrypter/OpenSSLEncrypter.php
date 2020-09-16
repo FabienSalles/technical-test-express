@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Encrypter;
 
 /**
- * Test/ReadOnly
+ * Test/ReadOnly.
  */
 final class OpenSSLEncrypter implements EncrypterInterface
 {
@@ -17,22 +19,17 @@ final class OpenSSLEncrypter implements EncrypterInterface
         $this->secret = $secret;
     }
 
-    public function encrypt(string $value, string $key) : string
+    public function encrypt(string $value, string $key): string
     {
         $iv = openssl_random_pseudo_bytes(self::ENCRYPTION_IV_LENGTH);
         if (!$iv) {
-            throw new \RuntimeException(
-                sprintf(
-                    'Error while generating IV randam pseudo bytes : %s.',
-                    openssl_error_string()
-                )
-            );
+            throw new \RuntimeException(sprintf('Error while generating IV randam pseudo bytes : %s.', openssl_error_string()));
         }
 
         $token = openssl_encrypt(
             $value,
             self::ENCRYPTION_METHOD,
-            $this->secret . $key,
+            $this->secret.$key,
             OPENSSL_RAW_DATA,
             $iv
         );
@@ -40,7 +37,7 @@ final class OpenSSLEncrypter implements EncrypterInterface
         return base64_encode($iv.$token);
     }
 
-    public function decrypt(string $value, string $key) : string
+    public function decrypt(string $value, string $key): string
     {
         $value = base64_decode($value);
         if (false === $value) {
@@ -53,16 +50,13 @@ final class OpenSSLEncrypter implements EncrypterInterface
         $result = openssl_decrypt(
             $encodedData,
             self::ENCRYPTION_METHOD,
-            $this->secret . $key,
+            $this->secret.$key,
             OPENSSL_RAW_DATA,
             $iv
         );
 
         if (!$result) {
-            throw new \RuntimeException(sprintf(
-                'Could not decrypt value : %s.',
-                openssl_error_string()
-            ));
+            throw new \RuntimeException(sprintf('Could not decrypt value : %s.', openssl_error_string()));
         }
 
         return $result;

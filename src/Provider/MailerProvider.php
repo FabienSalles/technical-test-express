@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Provider;
 
@@ -18,7 +20,7 @@ final class MailerProvider implements MailerProviderInterface
     public function sendEmail(string $templateId, string $destination, array $data)
     {
         $templateManager = new TemplateManager(getenv('URL_LINK_MY_ACCOUNT'));
-        if ($templateId === 'confirmation_001') {
+        if ('confirmation_001' === $templateId) {
             $tpl = $templateManager->getTemplateComputed($this->confirmTemplate(), $data);
             $subject = $tpl->subject;
             $message = $tpl->content;

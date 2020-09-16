@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Utils;
 
@@ -22,7 +24,7 @@ final class TemplateManager
             throw new \RuntimeException('no tpl given');
         }
 
-        $replaced = clone($tpl);
+        $replaced = clone $tpl;
         $replaced->subject = $this->computeText($replaced->subject, $data['customer'] ?? null);
         $replaced->content = $this->computeText($replaced->content, $data['customer'] ?? null);
 
@@ -35,14 +37,14 @@ final class TemplateManager
             $containsFirstname = strpos($text, '[customer:first_name]');
             $containsLasttname = strpos($text, '[customer:last_name]');
 
-            if ($containsFirstname !== false) {
+            if (false !== $containsFirstname) {
                 $text = str_replace(
                     '[customer:first_name]',
                     $customer->getFirstName(),
                     $text
                 );
             }
-            if ($containsLasttname !== false) {
+            if (false !== $containsLasttname) {
                 $text = str_replace(
                     '[customer:last_name]',
                     $customer->getLastName(),
@@ -50,13 +52,13 @@ final class TemplateManager
                 );
             }
 
-            (strpos($text, '[customer:gender]') !== false) and $text = str_replace('[customer:gender]',$customer->getGender(),$text);
+            (false !== strpos($text, '[customer:gender]')) and $text = str_replace('[customer:gender]', $customer->getGender(), $text);
 
-
-            if(strpos($text, '[link:my-account]') !== false){
-                $text = str_replace('[link:my-account]', $this->urlLinkMyAccount . '/' . $customer->getId(), $text);
-            } else
+            if (false !== strpos($text, '[link:my-account]')) {
+                $text = str_replace('[link:my-account]', $this->urlLinkMyAccount.'/'.$customer->getId(), $text);
+            } else {
                 $text = str_replace('[link:my-account]', '', $text);
+            }
         }
 
         return $text;

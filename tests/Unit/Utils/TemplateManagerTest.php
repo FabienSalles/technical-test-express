@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Unit\Utils;
 
 use App\Entity\Customer;

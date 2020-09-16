@@ -1,8 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Unit\MessageHandler\Domain\Customer;
 
-use App\Client\MailerInterface;
 use App\Encrypter\EncrypterInterface;
 use App\Entity\Customer;
 use App\Event\CustomerRegistered;
@@ -34,7 +35,6 @@ final class RegisterCustomerHandlerTest extends TestCase
     {
         $customerId = Uuid::uuid4()->toString();
 
-
         $expectedSubject = <<<MSG
         Corantin Scri Votre compte a bien été crée
         MSG;
@@ -49,7 +49,6 @@ final class RegisterCustomerHandlerTest extends TestCase
         Bien cordialement,
 
         MSG;
-
 
         $registerProviderMessage = new RegisterCustomer(
             $customerId,

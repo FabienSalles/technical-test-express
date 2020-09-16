@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Converter;
 
@@ -39,6 +41,7 @@ final class IriConverter implements IriConverterInterface
         if (\is_string($metadata->getAttribute('iri'))) {
             return $metadata->getAttribute('iri');
         }
+
         return $this->decorated->getIriFromItem($item, $referenceType);
     }
 

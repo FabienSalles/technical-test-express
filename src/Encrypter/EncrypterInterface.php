@@ -1,12 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Encrypter;
 
 /**
- * Test/ReadOnly
+ * Test/ReadOnly.
  */
 interface EncrypterInterface
 {
-    public function encrypt(string $value, string $key) : string;
-    public function decrypt(string $value, string $key) : string;
+    public function encrypt(string $value, string $key): string;
+
+    public function decrypt(string $value, string $key): string;
 }

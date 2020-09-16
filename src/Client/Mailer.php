@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Client;
 
 /**
- * Test/ReadOnly
+ * Test/ReadOnly.
  */
 final class Mailer implements MailerInterface
 {
@@ -24,7 +26,7 @@ final class Mailer implements MailerInterface
             'root_url' => $this->rootUrl,
             'templateId' => $templateId,
             'destination' => $destination,
-            'data' => $data
+            'data' => $data,
         ];
         $this->serialize();
     }

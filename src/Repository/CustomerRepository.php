@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -32,12 +34,12 @@ final class CustomerRepository extends ServiceEntityRepository implements Custom
         return $customer;
     }
 
-    public function getByEmail(string $email) : Customer
+    public function getByEmail(string $email): Customer
     {
         /** @var Customer $customer */
         $customer = $this->findOneBy(
             [
-                'email' => $email
+                'email' => $email,
             ]
         );
 

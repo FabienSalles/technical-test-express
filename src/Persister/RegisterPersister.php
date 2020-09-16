@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Persister;
 
@@ -7,8 +9,8 @@ use App\Encrypter\EncrypterInterface;
 use App\Message\Domain\Customer\RegisterCustomer;
 use App\Model\Api\Common\Register;
 use App\Model\Api\Common\RegisterResult;
-use App\Utils\Clock\ClockInterface;
 use App\Repository\CustomerRepositoryInterface;
+use App\Utils\Clock\ClockInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;

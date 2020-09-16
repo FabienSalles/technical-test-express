@@ -21,6 +21,9 @@ stop: ## Stop the project
 phpcs-check:
 	$(EXEC_PHP) bin/php-cs-fixer fix --dry-run --diff
 
+phpcs-fix:
+	$(EXEC_PHP) bin/php-cs-fixer fix
+
 #### Tests
 
 tu: ## Run unit tests

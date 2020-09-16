@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Unit\Persister;
 
@@ -32,8 +34,7 @@ class RegisterPersisterTest extends TestCase
 
     public function testRegister(): void
     {
-        $data = new class($this->clock)
-        {
+        $data = new class($this->clock) {
             /** @var ClockInterface */
             private $clock;
 
@@ -41,38 +42,47 @@ class RegisterPersisterTest extends TestCase
             {
                 $this->clock = $clock;
             }
+
             public function getId(): string
             {
                 return 'my-customer-id';
             }
+
             public function getRegisteredAt(): \DateTimeImmutable
             {
                 return $this->clock->now();
             }
+
             public function getEmail(): string
             {
                 return 'test@phpunit.com';
             }
+
             public function getFirstName(): string
             {
                 return 'Jeanne';
             }
+
             public function getLastName(): string
             {
                 return 'Martin';
             }
+
             public function getGender(): string
             {
                 return 'female';
             }
+
             public function getRawPassword(): string
             {
                 return 'my-password';
             }
+
             public function isOptinNewsletter(): bool
             {
                 return true;
             }
+
             public function getOfferId(): string
             {
                 return 'my-offer-id';
@@ -113,13 +123,13 @@ class RegisterPersisterTest extends TestCase
                 function (RegisterCustomer $content) {
                     return
                         $content->getRegisteredAt() === $this->clock->now() &&
-                        $content->getGender() === 'female' &&
-                        $content->getEmail() === 'test@phpunit.com' &&
-                        $content->getPassword() === 'my-password-encrypt' &&
-                        $content->getFirstName() === 'Jeanne' &&
-                        $content->getLastName() === 'Martin' &&
-                        $content->isOptinNewsletter() === true &&
-                        $content->getOfferId() === 'my-offer-id';
+                        'female' === $content->getGender() &&
+                        'test@phpunit.com' === $content->getEmail() &&
+                        'my-password-encrypt' === $content->getPassword() &&
+                        'Jeanne' === $content->getFirstName() &&
+                        'Martin' === $content->getLastName() &&
+                        true === $content->isOptinNewsletter() &&
+                        'my-offer-id' === $content->getOfferId();
                 }
             ))
             ->willReturn(

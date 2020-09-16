@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -128,7 +130,7 @@ class Customer
         $this->optinNewsletter = $optinNewsletter;
     }
 
-    private function encryptEmail(string $email) : string
+    private function encryptEmail(string $email): string
     {
         return hash('sha256', $email);
     }
@@ -141,6 +143,7 @@ class Customer
     public function setId(string $id): Customer
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -152,6 +155,7 @@ class Customer
     public function setRegisteredAt(\DateTimeImmutable $registeredAt): Customer
     {
         $this->registeredAt = $registeredAt;
+
         return $this;
     }
 
@@ -163,6 +167,7 @@ class Customer
     public function setEmail(string $email): Customer
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -174,6 +179,7 @@ class Customer
     public function setEmailHash(string $emailHash): Customer
     {
         $this->emailHash = $emailHash;
+
         return $this;
     }
 
@@ -185,6 +191,7 @@ class Customer
     public function setPassword(?string $password): Customer
     {
         $this->password = $password;
+
         return $this;
     }
 
@@ -196,6 +203,7 @@ class Customer
     public function setGender(string $gender): Customer
     {
         $this->gender = $gender;
+
         return $this;
     }
 
@@ -207,6 +215,7 @@ class Customer
     public function setFirstName(string $firstName): Customer
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
@@ -218,6 +227,7 @@ class Customer
     public function setLastName(string $lastName): Customer
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -229,6 +239,7 @@ class Customer
     public function setOptinNewsletter(bool $optinNewsletter): Customer
     {
         $this->optinNewsletter = $optinNewsletter;
+
         return $this;
     }
 }

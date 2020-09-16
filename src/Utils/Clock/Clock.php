@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Utils\Clock;
 
 /**
- * Test/ReadOnly
+ * Test/ReadOnly.
  */
 final class Clock implements ClockInterface
 {
@@ -19,6 +21,7 @@ final class Clock implements ClockInterface
         if (self::NOW === $datetime) {
             return $this->now();
         }
+
         return $this->now()->modify($datetime);
     }
 }

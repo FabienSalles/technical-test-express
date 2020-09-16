@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Unit\Provider;
 
 use App\Client\MailerInterface;

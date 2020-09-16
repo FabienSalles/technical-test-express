@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
 /**
- * Test/ReadOnly
+ * Test/ReadOnly.
  */
 class Kernel extends BaseKernel
 {
