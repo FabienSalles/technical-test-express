@@ -61,4 +61,6 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 
 ### Reactorisation de la classe TemplateManager
 * Suppression de la variable d'env
-* 
+* Suppression du if inutile
+* Suppression du tableau inutile dans la fonction computeText
+* déplacement de la condition de l'urlLink

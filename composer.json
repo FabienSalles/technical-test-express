@@ -30,13 +30,15 @@
         "symfony/yaml": "4.4.*"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
         "symfony/phpunit-bridge": "^4.4"
     },
     "config": {
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "bin-dir": "bin"
     },
     "autoload": {
         "psr-4": {

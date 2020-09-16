@@ -6,6 +6,13 @@ use App\Entity\Customer;
 
 final class TemplateManager
 {
+    private string $urlLinkMyAccount;
+
+    public function __construct(string $urlLinkMyAccount)
+    {
+        $this->urlLinkMyAccount = $urlLinkMyAccount;
+    }
+
     /**
      * Method signature can't be changed !
      */
@@ -16,47 +23,38 @@ final class TemplateManager
         }
 
         $replaced = clone($tpl);
-        $replaced->subject = $this->computeText($replaced->subject, $data);
-        $replaced->content = $this->computeText($replaced->content, $data);
+        $replaced->subject = $this->computeText($replaced->subject, $data['customer'] ?? null);
+        $replaced->content = $this->computeText($replaced->content, $data['customer'] ?? null);
 
         return $replaced;
     }
 
-    private function computeText($text, array $data)
+    private function computeText($text, Customer $customer = null)
     {
-        if(strpos($text, '[link:my-account]') !== false){
-            $urlLink = getenv('URL_LINK_MY_ACCOUNT');
-        }
-
-
-        if ($data['customer'] && $data['customer'] instanceof Customer) {
-            /** @var Customer $customer */
-            $customer = $data['customer'];
+        if ($customer instanceof Customer) {
             $containsFirstname = strpos($text, '[customer:first_name]');
             $containsLasttname = strpos($text, '[customer:last_name]');
 
-            if ($containsFirstname !== false || $containsLasttname !== false) {
-                if ($containsFirstname !== false) {
-                    $text = str_replace(
-                        '[customer:first_name]',
-                        $customer->getFirstName(),
-                        $text
-                    );
-                }
-                if ($containsLasttname !== false) {
-                    $text = str_replace(
-                        '[customer:last_name]',
-                        $customer->getLastName(),
-                        $text
-                    );
-                }
+            if ($containsFirstname !== false) {
+                $text = str_replace(
+                    '[customer:first_name]',
+                    $customer->getFirstName(),
+                    $text
+                );
+            }
+            if ($containsLasttname !== false) {
+                $text = str_replace(
+                    '[customer:last_name]',
+                    $customer->getLastName(),
+                    $text
+                );
             }
 
             (strpos($text, '[customer:gender]') !== false) and $text = str_replace('[customer:gender]',$customer->getGender(),$text);
 
 
-            if (isset($urlLink)) {
-                $text = str_replace('[link:my-account]', $urlLink . '/' . $customer->getId(), $text);
+            if(strpos($text, '[link:my-account]') !== false){
+                $text = str_replace('[link:my-account]', $this->urlLinkMyAccount . '/' . $customer->getId(), $text);
             } else
                 $text = str_replace('[link:my-account]', '', $text);
         }

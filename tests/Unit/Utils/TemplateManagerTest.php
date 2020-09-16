@@ -35,7 +35,7 @@ final class TemplateManagerTest extends TestCase
 
         $expectedResult = $this->createResultTemplate($customer);
 
-        $templateManager = new TemplateManager();
+        $templateManager = new TemplateManager(getenv('URL_LINK_MY_ACCOUNT'));
         $result = $templateManager->getTemplateComputed($this->createTemplate(), ['customer' => $customer]);
 
         $this->assertEquals($expectedResult, $result);

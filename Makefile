@@ -18,6 +18,9 @@ start: ## Start the project
 stop: ## Stop the project
 	$(DOCKER_COMPOSE) down --volumes --remove-orphans
 
+phpcs-check:
+	$(EXEC_PHP) bin/php-cs-fixer fix --dry-run --diff
+
 #### Tests
 
 tu: ## Run unit tests

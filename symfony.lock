@@ -19,6 +19,12 @@
     "behat/transliterator": {
         "version": "v1.3.0"
     },
+    "composer/semver": {
+        "version": "1.7.0"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.3"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -113,6 +119,18 @@
     "fig/link-util": {
         "version": "1.1.0"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
+    },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.39"
     },
@@ -145,6 +163,9 @@
     },
     "php": {
         "version": "7.4"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
@@ -370,6 +391,9 @@
     "symfony/polyfill-php73": {
         "version": "v1.14.0"
     },
+    "symfony/process": {
+        "version": "v4.4.13"
+    },
     "symfony/property-access": {
         "version": "v4.4.5"
     },
@@ -419,6 +443,9 @@
     },
     "symfony/service-contracts": {
         "version": "v2.0.1"
+    },
+    "symfony/stopwatch": {
+        "version": "v4.4.13"
     },
     "symfony/translation-contracts": {
         "version": "v2.0.1"

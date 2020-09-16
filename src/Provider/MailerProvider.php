@@ -17,7 +17,7 @@ final class MailerProvider implements MailerProviderInterface
 
     public function sendEmail(string $templateId, string $destination, array $data)
     {
-        $templateManager = new TemplateManager();
+        $templateManager = new TemplateManager(getenv('URL_LINK_MY_ACCOUNT'));
         if ($templateId === 'confirmation_001') {
             $tpl = $templateManager->getTemplateComputed($this->confirmTemplate(), $data);
             $subject = $tpl->subject;
