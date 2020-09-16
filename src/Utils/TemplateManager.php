@@ -33,32 +33,23 @@ final class TemplateManager
 
     private function computeText($text, Customer $customer = null)
     {
-        if ($customer instanceof Customer) {
-            $containsFirstname = strpos($text, '[customer:first_name]');
-            $containsLasttname = strpos($text, '[customer:last_name]');
+        if (null === $customer) {
+            return $text;
+        }
 
-            if (false !== $containsFirstname) {
-                $text = str_replace(
-                    '[customer:first_name]',
-                    $customer->getFirstName(),
-                    $text
-                );
-            }
-            if (false !== $containsLasttname) {
-                $text = str_replace(
-                    '[customer:last_name]',
-                    $customer->getLastName(),
-                    $text
-                );
-            }
+        if (false !== strpos($text, '[customer:first_name]')) {
+            $text = str_replace('[customer:first_name]', $customer->getFirstName(), $text);
+        }
+        if (false !== strpos($text, '[customer:last_name]')) {
+            $text = str_replace('[customer:last_name]', $customer->getLastName(), $text);
+        }
 
-            (false !== strpos($text, '[customer:gender]')) and $text = str_replace('[customer:gender]', $customer->getGender(), $text);
+        if (false !== strpos($text, '[customer:gender]')) {
+            $text = str_replace('[customer:gender]', $customer->getGender(), $text);
+        }
 
-            if (false !== strpos($text, '[link:my-account]')) {
-                $text = str_replace('[link:my-account]', $this->urlLinkMyAccount.'/'.$customer->getId(), $text);
-            } else {
-                $text = str_replace('[link:my-account]', '', $text);
-            }
+        if (false !== strpos($text, '[link:my-account]')) {
+            $text = str_replace('[link:my-account]', $this->urlLinkMyAccount.'/'.$customer->getId(), $text);
         }
 
         return $text;

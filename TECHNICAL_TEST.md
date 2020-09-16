@@ -63,4 +63,16 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 * Suppression de la variable d'env
 * Suppression du if inutile
 * Suppression du tableau inutile dans la fonction computeText
-* déplacement de la condition de l'urlLink
+* Déplacement de la condition de l'urlLink
+* Ajout de phpcs-fixer et fix des conventions de codage
+
+**Estimation du temps à l'instant T : 20min**
+
+## Dépassement de l'heure
+
+### Reactorisation de la classe TemplateManager
+
+* Création d'une condition return early
+* Suppression de variable inutile
+* Remplacement de la condition sur le genre du customer
+* Changement de l'indentation des if et suppression du else inutile
