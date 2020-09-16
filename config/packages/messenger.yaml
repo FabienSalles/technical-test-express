@@ -1,0 +1,6 @@
+framework:
+    messenger:
+        failure_transport: error_queue
+        transports:
+            default: '%env(MESSENGER_TRANSPORT_DSN)%'
+            error_queue: '%env(MESSENGER_TRANSPORT_ERROR_DSN)%'

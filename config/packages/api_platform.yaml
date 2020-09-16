@@ -1,0 +1,30 @@
+parameters:
+
+api_platform:
+    show_webby: false
+    title: Api
+    version: 1.0
+    http_cache:
+        max_age: 0
+        shared_max_age: 3600
+        vary: ['Content-Type', 'Authorization']
+        public: true
+    swagger:
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+    eager_loading:
+        max_joins: 100
+    formats:
+        json:
+            mime_types: ['application/json']
+        html:
+            mime_types: ['text/html']
+    patch_formats:
+        json:
+            mime_types: ['application/json']
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/Model/Api/Common'
+            - '%kernel.project_dir%/src/Entity'
