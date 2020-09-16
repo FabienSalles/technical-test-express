@@ -35,21 +35,6 @@ final class RegisterCustomerHandlerTest extends TestCase
     {
         $customerId = Uuid::uuid4()->toString();
 
-        $expectedSubject = <<<MSG
-        Corantin Scri Votre compte a bien été crée
-        MSG;
-
-        $expectedMessage = <<<MSG
-
-        Bonjour Corantin,
-
-        Merci d'avoir créé votre compte sur notre site vous pouvez maintenant accéder à votre espace en cliquant ici:
-        http://localhost/my-account/{$customerId}
-
-        Bien cordialement,
-
-        MSG;
-
         $registerProviderMessage = new RegisterCustomer(
             $customerId,
             $this->clock->now(),

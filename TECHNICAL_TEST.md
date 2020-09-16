@@ -76,3 +76,5 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 * Suppression de variable inutile
 * Remplacement de la condition sur le genre du customer
 * Changement de l'indentation des if et suppression du else inutile
+
+
