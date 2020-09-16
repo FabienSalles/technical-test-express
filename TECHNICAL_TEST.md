@@ -77,4 +77,14 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 * Remplacement de la condition sur le genre du customer
 * Changement de l'indentation des if et suppression du else inutile
 
+## Bonus
 
+* Envoie du mail sur le listener et création du TU associé
+
+## Evolution potentiels :
+* refactorer la classe MailerProvider en injectant la classe TemplateManager
+* passer la variable d'env via l'injection de dépendance
+* faire un test end-to-end sur l'envoie de mail en utilisant l'api
+* enlever les dupplication et notamment l'id du template à convertir en cosntante
+* passer phpstan sur le projet
+* regarder le reste des classes, rajouter des tests liés aux cas d'échecs et voir si d'autres choses doivent être corrigés
