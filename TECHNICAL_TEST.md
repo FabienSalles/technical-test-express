@@ -81,6 +81,7 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 * Envoie du mail sur le listener et création du TU associé
 
 ## Evolution potentiels :
+* rajouter le gender au mail
 * refactorer la classe MailerProvider en injectant la classe TemplateManager
 * passer la variable d'env via l'injection de dépendance
 * faire un test end-to-end sur l'envoie de mail en utilisant l'api
