@@ -53,7 +53,7 @@ Liste des éléments réalisés, des remarques et du processus utilisé pour ré
 * Réutilisation du code mort de la classe RegisterCustomerHandlerTest, merci.
 * Réutilisation de la méthode confirmTemplate de la classe MailProvider
 
-###  Création d'un test pour vérifier que la classe TemplateManager fonctionne correctement
+###  Création d'un test pour vérifier que la classe MailerProvider fonctionne correctement
 * Réutilisation du code
 
 **Estimation du temps à l'instant T : 40min**
